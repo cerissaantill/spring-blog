@@ -33,10 +33,9 @@ public class DiceController {
         } else {
             model.addAttribute("guessedNumber", false);
         }
-
-
         return "rollDiceResults";
-    }
+
+    } // public String rollTheDice
 }
 // Controller class
 
