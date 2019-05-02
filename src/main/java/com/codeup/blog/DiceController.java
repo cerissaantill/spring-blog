@@ -25,7 +25,19 @@ public class DiceController {
         model.addAttribute("random", random);
         model.addAttribute("guess", guess);
 
+
+    // compares the guessed number to the roll-dice results
+    Boolean guessedNumber;
+        if (guess == random) {
+            model.addAttribute("guessedNumber", true);
+        } else {
+            model.addAttribute("guessedNumber", false);
+        }
+
+
+        return "rollDiceResults";
     }
 }
+// Controller class
 
 
