@@ -1,6 +1,7 @@
-package com.codeup.blog.blog.Post;
+package com.codeup.blog.blog;
 
 import org.springframework.data.repository.CrudRepository;
+import java.security.Principal;
 
 
 

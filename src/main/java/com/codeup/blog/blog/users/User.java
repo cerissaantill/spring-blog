@@ -34,7 +34,8 @@ public class User {
 
 
 
-    //  default constructor
+    //  default Constructor:
+
     public User(){}
 
     public User(String username, String password, String email, String profilePicture, List <Post> posts, String colorScheme) {
@@ -54,6 +55,11 @@ public class User {
         profilePicture = copy.profilePicture;
         posts = copy.posts;
     }
+
+
+
+
+    // Getters & Setters:
 
     public long getId() {
         return id;
