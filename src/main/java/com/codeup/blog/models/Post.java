@@ -1,15 +1,7 @@
-package com.codeup.blog.blog;
+package com.codeup.blog.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinTable;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
+
 import org.apache.catalina.User;
 import java.util.Locale.Category;
 import java.util.List;
@@ -41,7 +33,7 @@ public class Post {
     private User user;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "post")
     @JoinTable(
             name = "posts_categories",
             joinColumns = {@JoinColumn(name = "post_id")},
