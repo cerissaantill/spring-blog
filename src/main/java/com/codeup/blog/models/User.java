@@ -1,6 +1,7 @@
 package com.codeup.blog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -28,7 +29,6 @@ public class User {
 
 
 // default Constructor:
-
 
     // C on the CRUD
     public User() {
