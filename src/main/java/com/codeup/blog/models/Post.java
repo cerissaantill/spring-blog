@@ -7,6 +7,11 @@ import java.util.Locale.Category;
 import java.util.List;
 
 
+
+/* GET FROM GITHUB   */
+
+
+
 // JPA annotations:
 
 @Entity
@@ -29,7 +34,7 @@ public class Post {
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName=)
     private User user;
 
 
@@ -49,25 +54,30 @@ public class Post {
 
     //  default constructor
 
+
+    // C in CRUD
     public Post(){}
 
-    public Post(String title, String body) {
+    // U in CRUD
+    public Post(String title, String body, User writer) {
         this.title = title;
         this.body = body;
     }
 
-    public Post(String title, String body, String image, User user) {
+
+    // R in CRUD
+    public Post(String title, String body, String image, User writer) {
         this.title = title;
         this.body = body;
         this.image = image;
-        this.user = user;
+        this.writer = writer;
     }
 
     public Post(String title, String body, String image, User user, List<Category> categories) {
         this.title = title;
         this.body = body;
         this.image = image;
-        this.user = user;
+        this.writer = user;
         this.categories = categories;
     }
 

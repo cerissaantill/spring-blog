@@ -15,19 +15,24 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    private String password;
+    private String email;
 
     @Column(nullable = false)
-    private String email;
+    private String password;
+
+
+    // fyi
+    // user = one to many
+    // post = many to one
 
 
 
 // default Constructor:
 
+
     // C on the CRUD
     public User() {
     }
-
 
     // R, U on the CRUD
     public User(String username, String password, String email) {
