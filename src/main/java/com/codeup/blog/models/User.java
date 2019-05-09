@@ -22,9 +22,8 @@ public class User {
     private String password;
 
 
-    // fyi
-    // user = one to many
-    // post = many to one
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "writer")
+    private List<Post> posts;
 
 
 
@@ -40,6 +39,15 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
+    public User(User copy) {
+        id = copy.id;   // This is SUPER important! Many things won't work if it's absent.
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
+
 
     public long getId() {
         return id;
