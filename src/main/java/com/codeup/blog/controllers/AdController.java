@@ -1,6 +1,7 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Ad;
+import com.codeup.blog.models.User;
 import com.codeup.blog.repositories.AdRepository;
 import com.codeup.blog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -13,14 +14,13 @@ public class AdController {
     private final AdRepository adsRepo;
     private final UserRepository userRepo;
 
-    public AdController(AdRepository ads, UserRepository users)
-    {
+    public AdController(AdRepository ads, UserRepository users) {
         this.adsRepo = ads;
         this.userRepo = users;
     }
 
     @GetMapping("/ads")
-    public String showPosts(Model model){
+    public String showPosts(Model model) {
 //        init();
 
         model.addAttribute("ads", adsRepo.findAll());
@@ -35,7 +35,7 @@ public class AdController {
     }
 
     @GetMapping("/ads/create")
-    public String showCreateForm(Model model){
+    public String showCreateForm(Model model) {
         model.addAttribute("ad", new Ad());
         return "ads/create";
     }
@@ -43,13 +43,9 @@ public class AdController {
     @PostMapping("/ads/create")
     @ResponseBody
     public String createPost(@ModelAttribute Ad ad) {
-        //@RequestParam String title, @RequestParam String description){
-//        Ad newAd = new Ad();
-//        newAd.setTitle(title);
-//        newAd.setDescription(description);
-//        newAd.setOwner(userRepo.findOne(1L));
-//        adsRepo.save(newAd);
-        ad.setOwner(userRepo.findOne(1L));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = userRepo.findOne(sessionUser.getId());
+        ad.setOwner(userDB);
         adsRepo.save(ad);
         return "new ad created";
     }
@@ -89,5 +85,5 @@ public class AdController {
 //    }
 
 
+}  // AdController class
 
-}
