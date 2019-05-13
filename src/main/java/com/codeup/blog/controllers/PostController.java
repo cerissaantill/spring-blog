@@ -24,7 +24,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String showPosts(Model model){
+    public String showPost(Model model){
 //        init();
 
         model.addAttribute("posts", postRepo.findAll());
