@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
         @GetMapping("/sub/{input2}/from/{input1}")
         @ResponseBody
         public String sub(@PathVariable int input1, @PathVariable int input2){
-            return String.valueOf(input1 - input2);
+            return String.valueOf(input2 - input1);
         }
 
 
